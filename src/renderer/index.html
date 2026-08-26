@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>File Viewer</title>
+    <!--
+      https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
+      file-viewer's renderers use Web Workers and WASM (PDF/CAD/archive/Typst
+      pipelines) and fall back to an iframe for the Draw.io viewer, so those
+      need explicit allowances beyond the electron-vite default policy.
+      connect-src/script-src also allow the local Vite dev server (HMR over
+      http/ws on localhost) — harmless in a packaged build since that origin
+      is never reachable there.
+    -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' http://localhost:*; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' blob:; worker-src 'self' blob:; frame-src 'self' blob:; connect-src 'self' http://localhost:* ws://localhost:*"
+    />
+  </head>
+
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
