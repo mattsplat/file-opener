@@ -5,6 +5,9 @@ import { electronAPI } from '@electron-toolkit/preload'
 const api = {
   onMenuOpenFile: (callback: () => void): void => {
     ipcRenderer.on('menu:open-file', callback)
+  },
+  onMenuOpenFolder: (callback: () => void): void => {
+    ipcRenderer.on('menu:open-folder', callback)
   }
 }
 

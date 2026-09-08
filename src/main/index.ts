@@ -38,6 +38,11 @@ function buildMenu(mainWindow: BrowserWindow): void {
           accelerator: 'CmdOrCtrl+O',
           click: () => mainWindow.webContents.send('menu:open-file')
         },
+        {
+          label: 'Open Folder…',
+          accelerator: 'CmdOrCtrl+Shift+O',
+          click: () => mainWindow.webContents.send('menu:open-folder')
+        },
         { type: 'separator' },
         isMac ? { role: 'close' } : { role: 'quit' }
       ]
